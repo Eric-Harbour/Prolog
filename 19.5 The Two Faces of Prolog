@@ -1,0 +1,24 @@
+# rules say how to prove something:
+# to prove the head,
+# prove the conditions first
+
+# this is a procedural way of thinking
+# can also think purely logically
+
+#instead of equating rules = instructions
+# focus on their logical content
+
+greatgrandparent(GGP, GGC) :-
+    parent(GGP, GP), parent(GP,P), parent(P, GGC).
+
+#Procedurely:
+# to prove greatgrandparent(GGP, GGC),
+# find some GP and P which you can prove parent (GGP, GP),
+#then parent(GP,P), then parent(P, GGC).
+
+#Logically: can be described as an assertino
+#for all bindings of GGP, GP, P, and GGC,
+# if parent(GGP,GP) and parent(GP,P) and parent(P,GGC),
+# are true, then greatgrandparent(GGP,GGC) is true
+
+##PROLOG IS A DECLARATIVE LANGUAGE##

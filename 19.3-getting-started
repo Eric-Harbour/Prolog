@@ -1,0 +1,47 @@
+#to access prolog:
+swipl
+
+
+in prolog:
+consult(relations). #the period is like ;
+-> returns true.
+#consult allows us to read from a file
+# will add relations facts into its database
+
+parent(margaret, kent).
+-> returns true
+
+parent(fred, pebbles).
+-> returns false.
+
+parent(P, holly)
+-> returns kim
+# this requires that the P is capital,
+# checks for the parent of holly
+
+parent(esther, Child)
+-> returns Child = margaret
+# checks for the child of given parent
+# requries capital variable
+
+parent(Parent, Child).
+-> returns the first parent, child pair.
+# allows us to search for parent, child pairs
+# gives the first pair found, and allows us to either:
+# continue (press Enter)
+# stop (input a ; )
+
+parent (Person, Person).
+-> returns false
+#checks if the given person is a parent of themselves
+
+# A query can have a list of terms separated by commas
+
+parent(margaret, X), parent(X, holly).
+-> returns kim
+# searches for an item that matches both X positions
+
+parent(Parent, kim), parent(Grandparent, Parent).
+-> returns: Grandparent = esther, Grandparent = herbert
+# searchs for the grandparent of kim
+# in this example, two grand parents

@@ -1,0 +1,14 @@
+# beginners assume that the langugage system
+# understands atoms. Consider the following:
+
+pays(miller,apprentice).
+pays(cook,miller).
+pays(cook farmer).
+pays(diner, cook).
+pays(housekeeper, cook).
+pays(housekeeper, butler).
+
+# the same as the relations
+# humans eyes can distinguish that these are different
+# prolog does not
+

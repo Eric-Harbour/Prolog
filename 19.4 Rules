@@ -1,0 +1,64 @@
+# Rules
+# example of creating a rule that says how to prove a great-grandparent relation
+greatgrandparent(GGP, GGC) :-
+    parent(GGP, GP), parent(GP,P), parent(P,GGC).
+
+#greatgrandparent(GGP, GGC) -> head of the rule
+# :-  -> the token
+# parent(GGP, GP), parent(GP,P), parent(P,GGC).
+# -> conditions of the rule
+
+greatgrandparent(esther,GreatGrandchild).
+-> returns GreatGrandchild = holly
+
+#realtions now contains two kinds of cluases
+# facts
+# rules
+
+# greatgrandparent(esther, GreatGrandchild).
+# called a goal (a term to be proved)
+
+# instead of greatgrandparent being directly defined,
+# it could be defined indirectly by way of a separate grandparent predicate
+grandparent(GP, GC) :-
+    parent (GP, P), parent(P, GC).
+
+greatgrandparent(GGP, GGC) :-
+    grandparent(GGP, P), parent(P, GGC).
+
+#SCOPE
+#the scope of the definition of a 
+#variable is the clause that contains it
+
+#RECURSIVE
+# a rule can be recurive, with a condition that unifies with its
+# own head
+
+ancestor(X,Y) :- parent(X,Y).
+ancestor(X,Y) :-
+    parent(Z,Y), ancestor(X,Z).
+
+#predicate (relation between objects) is defined using two rules
+#first: X is an ancestor of Y if X is a parent of Y
+#second: X is an ancestor of Y if X is an ancestor of a parent of Y
+
+ancestor(jean, jean).
+-> returns false
+
+ancestor(kim, holly).
+-> returns true
+
+ancestor(A, holly).
+-> returns a list of ancestors:
+-> kim, margaret, esther, herbert
+
+ancestor(kim, A).
+-> returns holly
+
+#Core syntax of Prolog
+<clause> ::= <fact> | <rule>
+<fact> ::= <term> .
+<rule> ::= <term> :- <termlist> .
+<termlist> ::= <term> | <term> , <termlist>
+
+
